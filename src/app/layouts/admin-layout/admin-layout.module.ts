@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'; import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -31,7 +31,8 @@ import { ChattingComponent } from 'src/app/pages/chatting/chatting.component';
     IconsComponent,
     MapsComponent,
     ChattingComponent
-  ]
+  ],
+  schemas: [NO_ERRORS_SCHEMA]
 })
 
 export class AdminLayoutModule { }
