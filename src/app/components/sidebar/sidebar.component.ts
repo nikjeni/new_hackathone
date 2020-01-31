@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { RegistartionService } from 'src/app/services/registration.service';
+import { isNullOrUndefined } from 'util';
 
 declare interface RouteInfo {
   path: string;
@@ -7,7 +9,7 @@ declare interface RouteInfo {
   icon: string;
   class: string;
 }
-export const ROUTES: RouteInfo[] = [
+export let ROUTES: RouteInfo[] = [
   { path: '/dashboard', title: 'Dashboard', icon: 'ni-tv-2 text-primary', class: '' },
   { path: '/chatting', title: 'Communication', icon: 'ni ni-chat-round text-orange', class: '' },
   { path: '/user-profile', title: 'User profile', icon: 'ni-single-02 text-yellow', class: '' },
@@ -27,7 +29,7 @@ export class SidebarComponent implements OnInit {
   public menuItems: any[];
   public isCollapsed = true;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,private registrationService:RegistartionService) { }
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
@@ -35,4 +37,15 @@ export class SidebarComponent implements OnInit {
       this.isCollapsed = true;
     });
   }
+
+  // userIsLogged(){
+  //   let data =this.registrationService.getUserInfo();
+  //   if(!data){
+  //     ROUTES.push({ path: '/login', title: 'Login', icon: 'ni-key-25 text-info', class: '' })
+  //     ROUTES.push({ path: '/register', title: 'Register', icon: 'ni-circle-08 text-pink', class: '' })
+  //   }
+  //   if(!isNullOrUndefined(data)&& !isNullOrUndefined(data.role) && data.role=='admin'){
+  //     ROUTES.push({ path: '/users', title: 'Users', icon: 'ni-circle-08 text-pink', class: '' })
+  //   }
+  // }
 }
