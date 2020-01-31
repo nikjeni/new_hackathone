@@ -13,6 +13,7 @@ import { UserProfileComponent } from '../../pages/user-profile/user-profile.comp
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChattingComponent } from 'src/app/pages/chatting/chatting.component';
+import { CreateEventComponent } from 'src/app/pages/create-event/create-event.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -31,9 +32,10 @@ import { ChattingComponent } from 'src/app/pages/chatting/chatting.component';
     TablesComponent,
     IconsComponent,
     MapsComponent,
-    ChattingComponent
+    ChattingComponent,
+    CreateEventComponent
   ],
-  schemas: [NO_ERRORS_SCHEMA]
+  schemas: [NO_ERRORS_SCHEMA],
 })
 
 export class AdminLayoutModule { }

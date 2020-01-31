@@ -1,0 +1,105 @@
+<style type="text/css">
+  #datepicker {
+    font-size: 0.875em;
+  }
+</style>
+<div class="header pb-8 pt-5 pt-lg-8 " style="min-height: 600px; background-position: center top;">
+  <!-- Mask -->
+  <!-- <span class="mask bg-gradient-danger opacity-8"></span> -->
+  <!-- Header container -->
+  <div class="container-fluid ">
+
+    <div class="col-lg-7 col-md-10 align-center">
+      <h1>Let's Create Event</h1>
+    </div>
+    <div class="row">
+      <!-- sub-menus -->
+      <div class="col-md-3">
+        Add Event Details
+        <ul>
+          <li (click)="onSubMenuClick('basic')">Basics</li>
+          <li (click)="onSubMenuClick('location')">Location</li>
+          <li (click)="onSubMenuClick('desc')">Description</li>
+          <li (click)="onSubMenuClick('photo')">Photos</li>
+        </ul>
+      </div>
+      <!-- sub-menus form -->
+      <form [formGroup]="eventBasicForm" method="POST">
+        <div *ngIf="basicFlag == true" class="col-md-9">
+
+          <div class="col">
+            <label>Event Name</label>
+            <input type="text" id="eventName" formControlName="eventName" class="form-control">
+          </div>
+
+          <div class='input-group date'>
+            <label for="datepickerStartDate">Event Starts From</label>
+              <ngb-datepicker #dp  (navigate)="date = $event.next" formControlName="startModel" 
+              (click)="eventStartDate()"></ngb-datepicker>
+              <hr/>
+            <input data-date-format="dd/mm/yyyy" value="{{inputStartDate}}">
+            
+            <br>
+           
+            <label for="datepickerEndDate">Event Ends At</label>
+            <ngb-datepicker #dp  (navigate)="date = $event.next" formControlName="endModel" 
+              (click)="eventEndDate()"></ngb-datepicker>
+            <input data-date-format="dd/mm/yyyy" value="{{inputEndDate}}">
+          
+           
+          </div>
+          <button type="submit" (click)="onNext('basic')">Next</button>
+
+        </div>
+
+        <div *ngIf="locationFlag == true" class="col-md-6">
+          <div>
+            <h3>Online Event</h3>
+            <div>
+              <label>Country</label>
+              <input type="text" formControlName="eventCountry" />
+            </div>
+            <div>
+              <label>City</label>
+              <input type="text" formControlName="eventCity" />
+            </div>
+          </div>
+          <button type="submit" (click)="onNext('location')">Next</button>
+        </div>
+
+
+
+        <div *ngIf="descFlag == true" class="col-md-6">
+          <h3>Description</h3>
+          <textarea rows="10" cols="50" placeholder="write description" formControlName="eventDescription"></textarea>
+          
+        </div>
+
+
+        <div *ngIf="descFlag == true" class="col-md-6">
+            <h3>Problem Statement</h3>
+            <textarea rows="10" cols="50" placeholder="problem Statement" formControlName="eventProblemStatement"></textarea>
+            <button type="submit" (click)="onNext('desc')">Next</button>
+          </div>
+
+        <div *ngIf="photosFlag == true" class="col-md-6">
+          <h3>Upload photos</h3>
+          <img [src]="url" height="450"> <br />
+          <input type='file' (change)="onSelectFile($event)">
+          <button type="submit" (click)="onSubmit(eventBasicForm)">Submit</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $('#datepickerStartDate').datepicker({
+    weekStart: 1,
+    daysOfWeekHighlighted: "6,0",
+    autoclose: true,
+    todayHighlight: true,
+  });
+  $('#datepickerStartDate').datepicker("setDate", new Date());
+</script>

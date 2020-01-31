@@ -74,4 +74,10 @@ export class RegistartionService {
       return of(result as T);
     };
   }
+
+  createEvent (data): Observable<UserPostResponse> {
+    return this.http.post<UserPostResponse>(apiUrl+'/createEvent', data, httpOptions).pipe(
+      catchError(this.handleError<UserPostResponse>('regitration'))
+    );
+  }
 }
