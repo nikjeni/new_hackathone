@@ -7,7 +7,7 @@ import * as io from 'socket.io-client';
   styleUrls: ['./chatting.component.scss']
 })
 export class ChattingComponent implements OnInit {
-  socket: SocketIOClient.Socket;
+  //socket: SocketIOClient.Socket;
   //Query DOM
   message;
   handle;
@@ -17,7 +17,7 @@ export class ChattingComponent implements OnInit {
   count = 0;
 
   constructor() {
-    this.socket = io.connect();
+    //this.socket = io.connect();
   }
 
   ngOnInit() {

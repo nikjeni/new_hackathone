@@ -22,7 +22,8 @@ import { ChattingComponent } from 'src/app/pages/chatting/chatting.component';
     FormsModule,
     HttpClientModule,
     NgbModule,
-    ClipboardModule
+    ClipboardModule,
+    ReactiveFormsModule
   ],
   declarations: [
     DashboardComponent,
