@@ -1,0 +1,9 @@
+.mdi-calendar:before {
+    content: "\F0ED";
+}
+
+
+.row:before, .row:after {
+    display: table;
+    content: " ";
+}

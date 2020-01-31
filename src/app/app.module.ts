@@ -12,7 +12,6 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { ToastrModule } from 'ngx-toastr';
 
-
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -28,7 +27,8 @@ import { ToastrModule } from 'ngx-toastr';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

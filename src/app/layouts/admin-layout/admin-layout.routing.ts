@@ -6,12 +6,14 @@ import { MapsComponent } from '../../pages/maps/maps.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { ChattingComponent } from 'src/app/pages/chatting/chatting.component';
+import { CreateEventComponent } from 'src/app/pages/create-event/create-event.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard', component: DashboardComponent },
     { path: 'user-profile', component: UserProfileComponent },
+    { path: 'create-event', component: CreateEventComponent },
     { path: 'tables', component: TablesComponent },
     { path: 'icons', component: IconsComponent },
     { path: 'maps', component: MapsComponent },
-    { path: 'chatting', component: ChattingComponent }
+    { path: 'chatting', component: ChattingComponent },
 ];
