@@ -12,6 +12,10 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { ToastrModule } from 'ngx-toastr';
 
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -22,13 +26,14 @@ import { ToastrModule } from 'ngx-toastr';
     RouterModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    SocketIoModule.forRoot(config)
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]
