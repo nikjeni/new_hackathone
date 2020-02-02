@@ -25,6 +25,7 @@ export class EventList implements OnInit {
       .subscribe(res => {
         if(res.success) {
           this.eventList= res.data;
+          this.collectionSize=this.eventList.length;
           this.eventList.forEach(row=>{
             if(row.startDate){
               row.startDate=this.dateFormat(row.startDate);

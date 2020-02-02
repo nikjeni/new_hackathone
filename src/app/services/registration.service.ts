@@ -88,4 +88,20 @@ export class RegistartionService {
       catchError(this.handleError<UserPostResponse>('getEvents'))
     );
   }
+  getUsers(): Observable<UserPostResponse> {
+    const headers = {
+      headers: new HttpHeaders({'Content-Type': 'application/json','Authorization':this.getUserToken()}),
+    };
+    return this.http.get<UserPostResponse>(apiUrl+'/getUsers', headers).pipe(
+      catchError(this.handleError<UserPostResponse>('getUsers'))
+    );
+  }
+  deactiveUser (data): Observable<UserPostResponse> {
+    const headers = {
+      headers: new HttpHeaders({'Content-Type': 'application/json','Authorization':this.getUserToken()}),
+    };
+    return this.http.put<UserPostResponse>(apiUrl+'/deactiveUser', data, headers).pipe(
+      catchError(this.handleError<UserPostResponse>('deactiveUser'))
+    );
+  }
 }

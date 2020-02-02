@@ -15,7 +15,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChattingComponent } from 'src/app/pages/chatting/chatting.component';
 import { CreateEventComponent } from 'src/app/pages/create-event/create-event.component';
 import { EventList } from 'src/app/pages/event-list/event-list.component';
-// import { ToastrModule } from 'ngx-toastr';
+import { UserList } from 'src/app/pages/users/user-list.component';
+import { UiSwitchModule } from 'ngx-toggle-switch';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { EventList } from 'src/app/pages/event-list/event-list.component';
     HttpClientModule,
     NgbModule,
     ClipboardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    UiSwitchModule
   ],
   declarations: [
     DashboardComponent,
@@ -35,7 +37,8 @@ import { EventList } from 'src/app/pages/event-list/event-list.component';
     MapsComponent,
     ChattingComponent,
     CreateEventComponent,
-    EventList
+    EventList,
+    UserList
   ],
   schemas: [NO_ERRORS_SCHEMA],
 })
