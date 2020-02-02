@@ -36,13 +36,10 @@ export class RegistartionService {
     );
   }
   updateProfile (data): Observable<UserPostResponse> {
-    // let headers = new HttpHeaders();
-    // headers.append('Content-Type', 'application/json');
-    // headers.append("JWT", this.getUserToken());
-    const headersdd = {
+    const headers = {
       headers: new HttpHeaders({'Content-Type': 'application/json','Authorization':this.getUserToken()}),
     };
-       return this.http.post<UserPostResponse>(apiUrl+'/updateProfile', data, headersdd).pipe(
+       return this.http.post<UserPostResponse>(apiUrl+'/updateProfile', data, headers).pipe(
       catchError(this.handleError<UserPostResponse>('updateProfile'))
     );
   }
@@ -76,8 +73,19 @@ export class RegistartionService {
   }
 
   createEvent (data): Observable<UserPostResponse> {
-    return this.http.post<UserPostResponse>(apiUrl+'/createEvent', data, httpOptions).pipe(
-      catchError(this.handleError<UserPostResponse>('regitration'))
+    const headers = {
+      headers: new HttpHeaders({'Content-Type': 'application/json','Authorization':this.getUserToken()}),
+    };
+    return this.http.post<UserPostResponse>(apiUrl+'/createEvent', data, headers).pipe(
+      catchError(this.handleError<UserPostResponse>('createEvent'))
+    );
+  }
+  getEvents(): Observable<UserPostResponse> {
+    const headers = {
+      headers: new HttpHeaders({'Content-Type': 'application/json','Authorization':this.getUserToken()}),
+    };
+    return this.http.get<UserPostResponse>(apiUrl+'/getEvents', headers).pipe(
+      catchError(this.handleError<UserPostResponse>('getEvents'))
     );
   }
 }

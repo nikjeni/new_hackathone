@@ -14,6 +14,7 @@ import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChattingComponent } from 'src/app/pages/chatting/chatting.component';
 import { CreateEventComponent } from 'src/app/pages/create-event/create-event.component';
+import { EventList } from 'src/app/pages/event-list/event-list.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -33,7 +34,8 @@ import { CreateEventComponent } from 'src/app/pages/create-event/create-event.co
     IconsComponent,
     MapsComponent,
     ChattingComponent,
-    CreateEventComponent
+    CreateEventComponent,
+    EventList
   ],
   schemas: [NO_ERRORS_SCHEMA],
 })

@@ -1,105 +1,64 @@
-<style type="text/css">
-  #datepicker {
-    font-size: 0.875em;
-  }
-</style>
-<div class="header pb-8 pt-5 pt-lg-8 " style="min-height: 600px; background-position: center top;">
-  <!-- Mask -->
-  <!-- <span class="mask bg-gradient-danger opacity-8"></span> -->
-  <!-- Header container -->
-  <div class="container-fluid ">
+<div class="header bg-gradient-danger py-7 py-lg-8">
+  <div class="container">
+    <div class="header-body mb-7">
+      <div class="row justify-content-center">
+        <div class="container col-xl-8 order-xl-1 card bg-secondary shadow">
+          <div class="card-header bg-white border-0">
+            <div class="row align-items-center">
+              <div class="col-6">
+                <h3 class="mb-0">Event Information</h3>
+              </div>
+              <div class="col-6 text-right">
+                <button type="submit" [disabled]="!eventForm.valid" (click)="saveEvent()" class="btn btn-info">Save Event</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="card-body px-lg-5 py-lg-5">
+                <form [formGroup]="eventForm">
+                  <div class="form-group col-md-12">
+                    <label for="name">Event Name</label>
+                    <input class="form-control" formControlName="name" name="name" id="name" type="text">
 
-    <div class="col-lg-7 col-md-10 align-center">
-      <h1>Let's Create Event</h1>
-    </div>
-    <div class="row">
-      <!-- sub-menus -->
-      <div class="col-md-3">
-        Add Event Details
-        <ul>
-          <li (click)="onSubMenuClick('basic')">Basics</li>
-          <li (click)="onSubMenuClick('location')">Location</li>
-          <li (click)="onSubMenuClick('desc')">Description</li>
-          <li (click)="onSubMenuClick('photo')">Photos</li>
-        </ul>
+                  </div>
+                  <div class="form-group col-md-12">
+                    <label for="description">Event Description</label>
+                    <textarea class="form-control" formControlName="description" name="description" id="description"
+                      rows="6" placeholder="Description"></textarea>
+                  </div>
+                  <div class="form-group col-md-12">
+                    <label for="startDate">Start Date</label>
+                    <input class="form-control" placeholder="Datepicker" type="text" formControlName="startDate"
+                      ngbDatepicker #startDatePicker="ngbDatepicker" (click)="startDatePicker.toggle()">
+                  </div>
+                  <div class="form-group col-md-12">
+                    <label for="endDate">End Date</label>
+                    <input class="form-control" placeholder="Datepicker" type="text" formControlName="endDate"
+                      ngbDatepicker #endDatePicker="ngbDatepicker" (click)="endDatePicker.toggle()">
+                  </div>
+
+                  <div class="form-group col-md-12">
+                    <label for="status">Status</label>
+                    <select class="form-control" formControlName="status" name="status" id="status">
+                      <option>New</option>
+                      <option>Inprogress</option>
+                      <option>Completed</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-12">
+                    <label for="rules">Event Rules</label>
+                    <textarea class="form-control" formControlName="rules" name="rules" id="rules" rows="6"
+                      placeholder="Add additional notes here."></textarea>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
       </div>
-      <!-- sub-menus form -->
-      <form [formGroup]="eventBasicForm" method="POST">
-        <div *ngIf="basicFlag == true" class="col-md-9">
-
-          <div class="col">
-            <label>Event Name</label>
-            <input type="text" id="eventName" formControlName="eventName" class="form-control">
-          </div>
-
-          <div class='input-group date'>
-            <label for="datepickerStartDate">Event Starts From</label>
-              <ngb-datepicker #dp  (navigate)="date = $event.next" formControlName="startModel" 
-              (click)="eventStartDate()"></ngb-datepicker>
-              <hr/>
-            <input data-date-format="dd/mm/yyyy" value="{{inputStartDate}}">
-            
-            <br>
-           
-            <label for="datepickerEndDate">Event Ends At</label>
-            <ngb-datepicker #dp  (navigate)="date = $event.next" formControlName="endModel" 
-              (click)="eventEndDate()"></ngb-datepicker>
-            <input data-date-format="dd/mm/yyyy" value="{{inputEndDate}}">
-          
-           
-          </div>
-          <button type="submit" (click)="onNext('basic')">Next</button>
-
-        </div>
-
-        <div *ngIf="locationFlag == true" class="col-md-6">
-          <div>
-            <h3>Online Event</h3>
-            <div>
-              <label>Country</label>
-              <input type="text" formControlName="eventCountry" />
-            </div>
-            <div>
-              <label>City</label>
-              <input type="text" formControlName="eventCity" />
-            </div>
-          </div>
-          <button type="submit" (click)="onNext('location')">Next</button>
-        </div>
-
-
-
-        <div *ngIf="descFlag == true" class="col-md-6">
-          <h3>Description</h3>
-          <textarea rows="10" cols="50" placeholder="write description" formControlName="eventDescription"></textarea>
-          
-        </div>
-
-
-        <div *ngIf="descFlag == true" class="col-md-6">
-            <h3>Problem Statement</h3>
-            <textarea rows="10" cols="50" placeholder="problem Statement" formControlName="eventProblemStatement"></textarea>
-            <button type="submit" (click)="onNext('desc')">Next</button>
-          </div>
-
-        <div *ngIf="photosFlag == true" class="col-md-6">
-          <h3>Upload photos</h3>
-          <img [src]="url" height="450"> <br />
-          <input type='file' (change)="onSelectFile($event)">
-          <button type="submit" (click)="onSubmit(eventBasicForm)">Submit</button>
-        </div>
-
-      </form>
     </div>
   </div>
 </div>
-
-<script type="text/javascript">
-  $('#datepickerStartDate').datepicker({
-    weekStart: 1,
-    daysOfWeekHighlighted: "6,0",
-    autoclose: true,
-    todayHighlight: true,
-  });
-  $('#datepickerStartDate').datepicker("setDate", new Date());
-</script>

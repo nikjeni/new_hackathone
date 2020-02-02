@@ -13,10 +13,10 @@ export let ROUTES: RouteInfo[] = [
   { path: '/dashboard', title: 'Dashboard', icon: 'ni-tv-2 text-primary', class: '' },
   { path: '/chatting', title: 'Communication', icon: 'ni ni-chat-round text-orange', class: '' },
   { path: '/user-profile', title: 'User profile', icon: 'ni-single-02 text-yellow', class: '' },
-  { path: '/create-event', title: 'Create Events', icon: 'ni-atom text-pink', class: '' },
-  { path: '/tables', title: 'Users', icon: 'ni-bullet-list-67 text-red', class: '' },
-  { path: '/login', title: 'Login', icon: 'ni-key-25 text-info', class: '' },
-  { path: '/register', title: 'Register', icon: 'ni-circle-08 text-pink', class: '' }
+  { path: '/event-list', title: 'Events', icon: 'ni-bullet-list-67 text-red', class: '' },
+  // { path: '/tables', title: 'Users', icon: 'ni-bullet-list-67 text-red', class: '' },
+  // { path: '/login', title: 'Login', icon: 'ni-key-25 text-info', class: '' },
+  // { path: '/register', title: 'Register', icon: 'ni-circle-08 text-pink', class: '' }
 ];
 
 @Component({
@@ -38,14 +38,4 @@ export class SidebarComponent implements OnInit {
     });
   }
 
-  // userIsLogged(){
-  //   let data =this.registrationService.getUserInfo();
-  //   if(!data){
-  //     ROUTES.push({ path: '/login', title: 'Login', icon: 'ni-key-25 text-info', class: '' })
-  //     ROUTES.push({ path: '/register', title: 'Register', icon: 'ni-circle-08 text-pink', class: '' })
-  //   }
-  //   if(!isNullOrUndefined(data)&& !isNullOrUndefined(data.role) && data.role=='admin'){
-  //     ROUTES.push({ path: '/users', title: 'Users', icon: 'ni-circle-08 text-pink', class: '' })
-  //   }
-  // }
 }
